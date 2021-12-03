@@ -49,7 +49,7 @@ public class TemperatureSeriesAnalysis {
         checkSize();
         double min_val = temperatureSeries[0];
         for (int i = 1; i < size; i++){
-            if (temperatureSeries[i] < temperatureSeries[i - 1]){
+            if (temperatureSeries[i] < min_val){
                 min_val = temperatureSeries[i];
             }
         }
@@ -60,7 +60,7 @@ public class TemperatureSeriesAnalysis {
         checkSize();
         double max_val = temperatureSeries[0];
         for (int i = 1; i < size; i++){
-            if (temperatureSeries[i] > temperatureSeries[i - 1]){
+            if (temperatureSeries[i] > max_val){
                 max_val = temperatureSeries[i];
             }
         }
@@ -140,27 +140,31 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        int new_size = temperatureSeries.length;
-        if (size == 0){
-            new_size = 1;
+        int newLen = temperatureSeries.length;
+        if (size == 0) {
+            newLen = 1;
         }
-        double[] newSeries = new double[new_size];
-        while (newSeries.length < size + temps.length){
-            newSeries = new double[newSeries.length*2];
+        double[] newSeries = new double[newLen];
+
+        while (newSeries.length < size + temps.length) {
+            newSeries = new double[newSeries.length * 2];
+
             int j = 0;
-            while (j < temperatureSeries.length){
+            while (j < temperatureSeries.length) {
                 newSeries[j] = temperatureSeries[j];
                 j++;
             }
         }
+
         int k = 0;
-        while (k < temps.length){
-            if ( temps[k] < absoluteZero){
-                throw new InputMismatchException("Value is less than absolute zero");
+        while (k < temps.length) {
+            if (temps[k] < absoluteZero) {
+                throw new InputMismatchException();
             }
             newSeries[k+size] = temps[k];
             k++;
         }
+
         temperatureSeries = newSeries;
         size += temps.length;
         return size;
