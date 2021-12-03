@@ -178,7 +178,7 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test
     public void testFindTempClosestToZero() {
-        double expResult = 16.99;
+        double expResult = 16.9;
         double actualResult = seriesAnalysisManyEl2.findTempClosestToZero();
 
         assertEquals(expResult, actualResult, 0.00001);
@@ -208,7 +208,7 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test
     public void testFindTempsLessThen(){
-        double[] expResult = {-56, -76.9, -31, -16.99};
+        double[] expResult = {-56, -76.9, -31, -16.9};
         double[] actualResult = seriesAnalysisManyEl2.findTempsLessThen(0.0);
 
         assertArrayEquals(expResult, actualResult, 0.00001);

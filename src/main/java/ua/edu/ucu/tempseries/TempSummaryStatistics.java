@@ -1,8 +1,5 @@
 package ua.edu.ucu.tempseries;
 
-import lombok.Getter;
-
-@Getter
 public class TempSummaryStatistics {
     private final double avgTemp;
     private final double devTemp;
@@ -14,5 +11,21 @@ public class TempSummaryStatistics {
         this.devTemp = analysis.deviation();
         this.minTemp = analysis.min();
         this.maxTemp = analysis.max();
+    }
+
+    public double getAvgTemp() {
+        return avgTemp;
+    }
+
+    public double getDevTemp() {
+        return devTemp;
+    }
+
+    public double getMaxTemp() {
+        return maxTemp;
+    }
+
+    public double getMinTemp() {
+        return minTemp;
     }
 }
