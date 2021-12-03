@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TemperatureSeriesAnalysisTest {
-    private TemperatureSeriesAnalysis seriesAnalysisOneEl1, seriesAnalysisOneEl2,
+    private final TemperatureSeriesAnalysis seriesAnalysisOneEl1, seriesAnalysisOneEl2,
             seriesAnalysisEmpty, seriesAnalysisManyEl1, seriesAnalysisManyEl2, seriesAnalysisManyEl3;
     public TemperatureSeriesAnalysisTest(){
         double[] tempSeries1 = {15.6};
@@ -151,7 +151,7 @@ public class TemperatureSeriesAnalysisTest {
 
     //-----------------TEST CLOSEST-----------------
     @Test
-    public void testFindTempClosestToZeroOneElementArray(){
+    public void testFindTempClosestToZeroWithOneElementArray(){
         double expResult = 15.6;
         double actualResult = seriesAnalysisOneEl1.findTempClosestToZero();
 
@@ -159,7 +159,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempClosestToValueOneElementArray(){
+    public void testFindTempClosestToValueOneWithElementArray(){
         double expResult = -34.54;
         double actualResult = seriesAnalysisOneEl2.findTempClosestToValue(17.67);
 
@@ -167,12 +167,12 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testFindTempClosestToZeroEmptyArray(){
+    public void testFindTempClosestToZeroWithEmptyArray(){
         seriesAnalysisEmpty.findTempClosestToZero();
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testFindTempClosestToValueEmptyArray(){
+    public void testFindTempClosestToValueWithEmptyArray(){
         seriesAnalysisEmpty.findTempClosestToValue(15);
     }
 
@@ -194,7 +194,7 @@ public class TemperatureSeriesAnalysisTest {
 
     //-----------------TEST LESS-----------------
     @Test
-    public void testFindTempsLessThenOneElementArray() {
+    public void testFindTempsLessThenWithOneElementArray() {
         double[] expResult = {};
         double[] actualResult = seriesAnalysisOneEl1.findTempsLessThen(-4.5);
 
@@ -202,7 +202,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testFindTempsLessThenEmptyArray(){
+    public void testFindTempsLessThenWithEmptyArray(){
         seriesAnalysisEmpty.findTempsLessThen(3.6);
     }
 
@@ -216,7 +216,7 @@ public class TemperatureSeriesAnalysisTest {
 
     //-----------------TEST GREATER-----------------
     @Test
-    public void testFindTempsGreaterThenValueOneElementArray() {
+    public void testFindTempsGreaterThenValueWithOneElementArray() {
         double[] expResult = {15.6};
         double[] actualResult = seriesAnalysisOneEl1.findTempsGreaterThen(-2.0);
 
@@ -224,7 +224,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testFindTempsGreaterThenWithEmptyArray() {
+    public void testFindTempsGreaterThenWithWithEmptyArray() {
         seriesAnalysisEmpty.findTempsGreaterThen(1.0);
     }
 
@@ -307,4 +307,5 @@ public class TemperatureSeriesAnalysisTest {
     }
 
 }
+
 
