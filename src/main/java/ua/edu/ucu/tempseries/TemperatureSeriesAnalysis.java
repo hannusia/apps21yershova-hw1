@@ -20,51 +20,51 @@ public class TemperatureSeriesAnalysis {
         this.size = temperatureSeries.length;
     }
 
-    private void checkSize(){
-        if (size == 0){
+    private void checkSize() {
+        if (size == 0) {
             throw new IllegalArgumentException("Array is empty");
         }
     }
 
     public double average() {
         checkSize();
-        double average_val = 0;
-        for (double i : temperatureSeries){
-            average_val += i;
+        double averageVal = 0;
+        for (double i : temperatureSeries) {
+            averageVal += i;
         }
-        return average_val / size;
+        return averageVal / size;
     }
 
     public double deviation() {
         checkSize();
-        double deviation_val = 0;
-        double average_val = average();
-        for (double i : temperatureSeries){
-            deviation_val += (i - average_val) * (i - average_val);
+        double deviationVal = 0;
+        double averageVal = average();
+        for (double i : temperatureSeries) {
+            deviationVal += (i - averageVal) * (i - averageVal);
         }
-        return Math.sqrt(deviation_val / size);
+        return Math.sqrt(deviationVal / size);
     }
 
     public double min() {
         checkSize();
-        double min_val = temperatureSeries[0];
-        for (int i = 1; i < size; i++){
-            if (temperatureSeries[i] < min_val){
-                min_val = temperatureSeries[i];
+        double minVal = temperatureSeries[0];
+        for (int i = 1; i < size; i++) {
+            if (temperatureSeries[i] < minVal) {
+                minVal = temperatureSeries[i];
             }
         }
-        return min_val;
+        return minVal;
     }
 
     public double max() {
         checkSize();
-        double max_val = temperatureSeries[0];
-        for (int i = 1; i < size; i++){
-            if (temperatureSeries[i] > max_val){
-                max_val = temperatureSeries[i];
+        double maxVal = temperatureSeries[0];
+        for (int i = 1; i < size; i++) {
+            if (temperatureSeries[i] > maxVal) {
+                maxVal = temperatureSeries[i];
             }
         }
-        return max_val;
+        return maxVal;
     }
 
     public double findTempClosestToZero() {
@@ -73,33 +73,33 @@ public class TemperatureSeriesAnalysis {
 
     public double findTempClosestToValue(double tempValue) {
         checkSize();
-        double min_distance = Math.abs(temperatureSeries[0] - tempValue);
-        double closest_val = temperatureSeries[0];
-        for (int i = 1; i < size; i++){
+        double minDistance = Math.abs(temperatureSeries[0] - tempValue);
+        double closestVal = temperatureSeries[0];
+        for (int i = 1; i < size; i++) {
             double distance = Math.abs(temperatureSeries[i] - tempValue);
-            if (distance == min_distance && temperatureSeries[i] > closest_val){
-                closest_val = temperatureSeries[i];
+            if (distance == minDistance && temperatureSeries[i] > closestVal) {
+                closestVal = temperatureSeries[i];
             }
-            if (distance < min_distance){
-                min_distance = distance;
-                closest_val = temperatureSeries[i];
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestVal = temperatureSeries[i];
             }
         }
-        return closest_val;
+        return closestVal;
     }
 
-    private double[] findTemps(double tempValue, boolean flag){
+    private double[] findTemps(double tempValue, boolean flag) {
         checkSize();
         int num = 0;
-        if (flag){
-            for (double i : temperatureSeries){
-                if (i < tempValue){
+        if (flag) {
+            for (double i : temperatureSeries) {
+                if (i < tempValue) {
                     num++;
                 }
             }
-        }else{
-            for (double i : temperatureSeries){
-                if (i > tempValue){
+        } else {
+            for (double i : temperatureSeries) {
+                if (i > tempValue) {
                     num++;
                 }
             }
@@ -107,16 +107,16 @@ public class TemperatureSeriesAnalysis {
 
         double[] temps = new double[num];
         int counter = 0;
-        if (flag){
-            for (double i : temperatureSeries){
-                if (i < tempValue){
+        if (flag) {
+            for (double i : temperatureSeries) {
+                if (i < tempValue) {
                     temps[counter] = i;
                     counter++;
                 }
             }
-        }else{
-            for (double i : temperatureSeries){
-                if (i > tempValue){
+        } else {
+            for (double i : temperatureSeries) {
+                if (i > tempValue) {
                     temps[counter] = i;
                     counter++;
                 }

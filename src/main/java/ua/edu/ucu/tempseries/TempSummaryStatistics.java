@@ -6,7 +6,7 @@ public class TempSummaryStatistics {
     private final double minTemp;
     private final double maxTemp;
 
-    public TempSummaryStatistics(TemperatureSeriesAnalysis analysis){
+    public TempSummaryStatistics(TemperatureSeriesAnalysis analysis) {
         this.avgTemp = analysis.average();
         this.devTemp = analysis.deviation();
         this.minTemp = analysis.min();
